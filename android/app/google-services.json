@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "91271873928",
+    "firebase_url": "https://app-propiedad-raiz.firebaseio.com",
+    "project_id": "app-propiedad-raiz",
+    "storage_bucket": "app-propiedad-raiz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:91271873928:android:1bf91a23a3a1776404663d",
+        "android_client_info": {
+          "package_name": "com.propiedadraizOmar.Berrio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "91271873928-e8o8bv4f51fjq0qled327sktqip31vp5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUZT4Zc0hRH60U4e8q9I5J0g1QiQa3yt0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "91271873928-e8o8bv4f51fjq0qled327sktqip31vp5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
