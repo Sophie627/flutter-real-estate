@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -16,9 +17,11 @@ import 'package:flutter_listings/services/FirebaseHelper.dart';
 import 'package:flutter_listings/services/helper.dart';
 import 'package:flutter_listings/ui/addReview/AddReviewScreen.dart';
 import 'package:flutter_listings/ui/chat/ChatScreen.dart';
+import 'package:flutter_listings/ui/tourScreen/tourScreen.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class ListingDetailsScreen extends StatefulWidget {
   final ListingModel listing;
@@ -57,6 +60,7 @@ class _ListingDetailsScreenState extends State<ListingDetailsScreen> {
       });
     }
     super.initState();
+    if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
   }
 
   @override
@@ -410,7 +414,36 @@ class _ListingDetailsScreenState extends State<ListingDetailsScreen> {
                 },
                 initialData: [],
               ),
-            )
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ConstrainedBox(
+                  child: RaisedButton(
+                      padding:
+                      EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                      child: Text(
+                        'Virtual Tour',
+                        style: TextStyle(
+                            color: isDarkMode(context)
+                                ? Colors.black
+                                : Colors.white,
+                            fontSize: 20),
+                      ),
+                      color: Color(COLOR_PRIMARY),
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide.none,
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => TourScreen(
+                            tourUrl: widget.listing.tourURL,
+                          )),
+                        );
+                      }),
+                  constraints: BoxConstraints(minWidth: double.infinity)),
+            ),
           ]),
         ),
       ),

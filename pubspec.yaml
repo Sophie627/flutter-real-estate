@@ -42,6 +42,7 @@ dependencies:
   google_maps_flutter: ^0.5.28+1
   flutter_google_places: ^0.2.6
   google_maps_webservice: ^0.0.17
+  webview_flutter: ^1.0.7
 
   flutter:
     sdk: flutter
