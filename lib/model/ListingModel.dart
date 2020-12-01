@@ -21,6 +21,7 @@ class ListingModel {
   num reviewsCount = 0;
   num reviewsSum = 0;
   String title = '';
+  String tourURL = 'https://asdelogy.com/palmacera';
 
   //internal use only, don't save to db
   bool isFav = false;
@@ -45,11 +46,13 @@ class ListingModel {
       this.price,
       this.reviewsCount,
       this.reviewsSum,
+      this.tourURL,
       this.title});
 
   factory ListingModel.fromJson(Map<String, dynamic> parsedJson) {
     print('ListingModel.fromJson ${parsedJson.toString()}');
     return new ListingModel(
+      tourURL: parsedJson['tourURL'] ?? '',
       authorID: parsedJson['authorID'] ?? '',
       authorName: parsedJson['authorName'] ?? '',
       authorProfilePic: parsedJson['authorProfilePic'] ?? '',
@@ -78,6 +81,7 @@ class ListingModel {
 
   Map<String, dynamic> toJson() {
     return {
+      'tourURL': this.tourURL,
       'authorID': this.authorID,
       'authorName': this.authorName,
       'authorProfilePic': this.authorProfilePic,

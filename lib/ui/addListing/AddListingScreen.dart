@@ -28,6 +28,7 @@ class _AddListingScreenState extends State<AddListingScreen> {
   CategoriesModel _categoryValue = new CategoriesModel();
   TextEditingController _titleController = TextEditingController();
   TextEditingController _descController = TextEditingController();
+  TextEditingController _tourController = TextEditingController();
   TextEditingController _priceController = TextEditingController();
   FireStoreUtils _fireStoreUtils = FireStoreUtils();
   Future<List<CategoriesModel>> _categoriesFuture;
@@ -339,6 +340,26 @@ class _AddListingScreenState extends State<AddListingScreen> {
                                 }),
                           ),
                         ),
+                        Center(
+                          child: Container(
+                            width: MediaQuery.of(context).size.width,
+                            child: TextField(
+                              controller: _tourController,
+                              keyboardType: TextInputType.url,
+                              textAlign: TextAlign.center,
+                              decoration: InputDecoration(
+                                isDense: true,
+                                hintText: 'URL or virtual tour',
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide.none,
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide.none,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -498,7 +519,10 @@ class _AddListingScreenState extends State<AddListingScreen> {
       showAlertDialog(
           context,'Propiedad',
            'No tiene titulo la propiedad');
-    } else if (_descController.text.trim().isEmpty) {
+    } else if (_tourController.text.isEmpty) {
+      showAlertDialog(context, 'Descripción', 'tourUrl is empty');
+    }
+    else if (_descController.text.trim().isEmpty) {
       showAlertDialog(context, 'Descripción', 
           'Necesita contarnos algo de la propiedad.');
     } else if (_priceController.text.trim().isEmpty) {
@@ -532,10 +556,11 @@ class _AddListingScreenState extends State<AddListingScreen> {
           categoryTitle: _categoryValue.title,
           description: _descController.text.trim(),
           price: _priceController.text.trim() + '\$',
-          latitude: _placeDetail.result.geometry.location.lat,
-          longitude: _placeDetail.result.geometry.location.lng,
-          /* latitude: 5.0,
-          longitude:5.0, */
+          tourURL: _tourController.text,
+          /*latitude: _placeDetail.result.geometry.location.lat,
+          longitude: _placeDetail.result.geometry.location.lng,*/
+           latitude: 5.0,
+          longitude:5.0,
           filters: _filters,
           photo: _imagesUrls.first,
           place: "Tienes esta solicitud de aprobación",
