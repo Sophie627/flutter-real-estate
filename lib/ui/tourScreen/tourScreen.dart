@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:webview_flutter_plus/webview_flutter_plus.dart';
 
 class TourScreen extends StatefulWidget {
 
@@ -21,7 +21,8 @@ class _TourScreenState extends State<TourScreen> {
          "Virtual Tour",
         ),
       ),
-      body: WebView(
+      body: WebViewPlus(
+        javascriptMode: JavascriptMode.unrestricted,
         initialUrl: widget.tourUrl,
       ),
     );
