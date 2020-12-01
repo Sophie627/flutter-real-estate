@@ -55,8 +55,8 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
                   maxRating: 5,
                   itemSize: 30,
                   itemPadding: EdgeInsets.all(4),
-                  itemBuilder: (context, index) =>
-                      Icon(Icons.star, color: Color(COLOR_PRIMARY)),
+                  // itemBuilder: (context, index) =>
+                  //     Icon(Icons.star, color: Color(COLOR_PRIMARY)),
                   unratedColor: Color(COLOR_PRIMARY).withOpacity(.5),
                   onRatingUpdate: (newValue) {
                     _rating = newValue;

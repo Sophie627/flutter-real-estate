@@ -111,6 +111,8 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
   void initState() {
     WidgetsBinding.instance.addObserver(this);
     super.initState();
+    final fbm = FirebaseMessaging();
+    fbm.requestNotificationPermissions();
     FireStoreUtils.firebaseMessaging.configure(
       onBackgroundMessage: backgroundMessageHandler,
       onMessage: (Map<String, dynamic> message) async {

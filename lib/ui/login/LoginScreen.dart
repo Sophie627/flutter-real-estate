@@ -120,28 +120,27 @@ class _LoginScreen extends State<LoginScreen> {
                       cursorColor: Color(COLOR_PRIMARY),
                       decoration: InputDecoration(
                         contentPadding:
-                        new EdgeInsets.only(left: 16, right: 16),
+                            new EdgeInsets.only(left: 16, right: 16),
                         hintText: 'Clave',
                         focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(25.0),
                             borderSide: BorderSide(
                                 color: Color(COLOR_PRIMARY), width: 2.0)),
                         errorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Theme
-                              .of(context)
-                              .errorColor),
+                          borderSide:
+                              BorderSide(color: Theme.of(context).errorColor),
                           borderRadius: BorderRadius.circular(25.0),
                         ),
                         focusedErrorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Theme
-                              .of(context)
-                              .errorColor),
+                          borderSide:
+                              BorderSide(color: Theme.of(context).errorColor),
                           borderRadius: BorderRadius.circular(25.0),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.grey[200]),
                           borderRadius: BorderRadius.circular(25.0),
-                        ),)),
+                        ),
+                      )),
                 ),
               ),
             ),
@@ -154,11 +153,10 @@ class _LoginScreen extends State<LoginScreen> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(25),
                       shape: BoxShape.rectangle,
-                      border:
-                      Border.all(color: Colors.grey[200])),
+                      border: Border.all(color: Colors.grey[200])),
                   child: InternationalPhoneNumberInput(
                     onInputChanged: (PhoneNumber number) =>
-                    _phoneNumber = number.phoneNumber,
+                        _phoneNumber = number.phoneNumber,
                     onInputValidated: (bool value) => _isPhoneValid = value,
                     ignoreBlank: true,
                     autoValidate: true,
@@ -190,7 +188,7 @@ class _LoginScreen extends State<LoginScreen> {
                   onChanged: (_) {},
                   onTap: () {},
                   length: 6,
-                  textInputType: TextInputType.phone,
+                  keyboardType: TextInputType.phone,
                   backgroundColor: Colors.transparent,
                   pinTheme: PinTheme(
                       shape: PinCodeFieldShape.box,
@@ -220,7 +218,9 @@ class _LoginScreen extends State<LoginScreen> {
                   child: RaisedButton(
                     color: Color(COLOR_PRIMARY),
                     child: Text(
-                      signInWithPhoneNumber ? 'Envíame un código' : 'Inicia sesión',
+                      signInWithPhoneNumber
+                          ? 'Envíame un código'
+                          : 'Inicia sesión',
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
@@ -280,8 +280,8 @@ class _LoginScreen extends State<LoginScreen> {
                     final result = await facebookLogin.logIn(['email']);
                     switch (result.status) {
                       case FacebookLoginStatus.loggedIn:
-                        showProgress(
-                            context, 'Iniciando sesión, por favor espera...', false);
+                        showProgress(context,
+                            'Iniciando sesión, por favor espera...', false);
                         await FirebaseAuth.instance
                             .signInWithCredential(
                                 FacebookAuthProvider.getCredential(
@@ -339,16 +339,18 @@ class _LoginScreen extends State<LoginScreen> {
 
   Future<User> onClick(String email, String password) {
     if (email.isEmpty) {
-      showAlertDialog(
-          context, 'Correo electrónico', 'Correo electrónico es necesario para inicia sesión');
+      showAlertDialog(context, 'Correo electrónico',
+          'Correo electrónico es necesario para inicia sesión');
       return null;
     } else if (!RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(email)) {
-      showAlertDialog(context, 'Correo electrónico', 'Correo electrónico no es válido');
+      showAlertDialog(
+          context, 'Correo electrónico', 'Correo electrónico no es válido');
       return null;
     } else if (password.isEmpty) {
-      showAlertDialog(context, 'Clave', 'La clave es necesario para iniciar sesión');
+      showAlertDialog(
+          context, 'Clave', 'La clave es necesario para iniciar sesión');
       return null;
     } else {
       showProgress(context, 'Iniciando sesión, espera por favor...', false);
@@ -380,11 +382,12 @@ class _LoginScreen extends State<LoginScreen> {
       hideProgress();
       switch ((exception as PlatformException).code) {
         case 'ERROR_INVALID_EMAIL':
-          showAlertDialog(
-              context, 'No me pude autenticar', 'Este correo electrónico es inválido');
+          showAlertDialog(context, 'No me pude autenticar',
+              'Este correo electrónico es inválido');
           break;
         case 'ERROR_WRONG_PASSWORD':
-          showAlertDialog(context, 'No me pude autenticar', 'La clave esta mal.');
+          showAlertDialog(
+              context, 'No me pude autenticar', 'La clave esta mal.');
           break;
         case 'ERROR_USER_NOT_FOUND':
           showAlertDialog(context, 'No me pude autenticar',

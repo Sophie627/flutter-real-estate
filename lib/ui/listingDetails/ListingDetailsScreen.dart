@@ -82,12 +82,12 @@ class _ListingDetailsScreenState extends State<ListingDetailsScreen> {
                     Icons.favorite,
                     color: widget.listing.isFav
                         ? Color(COLOR_PRIMARY)
-                        : isDarkMode(context) ? Colors.white : null,
+                        : isDarkMode(context)
+                            ? Colors.white
+                            : null,
                   ),
                   title: Text(
-                    widget.listing.isFav
-                        ? 'Quitar de favoritos'
-                        : 'Favoritos',
+                    widget.listing.isFav ? 'Quitar de favoritos' : 'Favoritos',
                     style: TextStyle(fontSize: 18),
                   ),
                   onTap: () async {
@@ -116,7 +116,7 @@ class _ListingDetailsScreenState extends State<ListingDetailsScreen> {
                           'Comentario',
                           style: TextStyle(fontSize: 18),
                         ),
-                          onTap: () async {
+                        onTap: () async {
                           Navigator.pop(context);
                           await Navigator.of(context).push(
                               new MaterialPageRoute(
@@ -197,9 +197,8 @@ class _ListingDetailsScreenState extends State<ListingDetailsScreen> {
                           );
                           AlertDialog alert = AlertDialog(
                             title: Text('Borrar propiedad'),
-                            content:
-                                Text('Realmente deseas borrar esta '
-                                    'propiedad?'),
+                            content: Text('Realmente deseas borrar esta '
+                                'propiedad?'),
                             actions: [okButton, yesButton],
                           );
                           showDialog(
@@ -235,37 +234,34 @@ class _ListingDetailsScreenState extends State<ListingDetailsScreen> {
             widget.listing.photos.isEmpty
                 ? null
                 : Container(
-              height: MediaQuery
-                  .of(context)
-                  .size
-                  .height / 3,
-              child: Stack(
-                  children: skipNulls([
-                    PageView.builder(
-                        controller: _pagerController,
-                        itemCount: widget.listing.photos.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return displayImage(
-                              widget.listing.photos[index], 400);
-                        }),
-                    widget.listing.photos.length < 2
-                        ? null
-                        : Padding(
-                      padding: const EdgeInsets.only(bottom: 8.0),
-                      child: Align(
-                          alignment: Alignment.bottomCenter,
-                          child: SmoothPageIndicator(
-                              effect: ColorTransitionEffect(
-                                  activeDotColor: Color(COLOR_PRIMARY),
-                                  dotHeight: 8,
-                                  dotWidth: 8,
-                                  dotColor: Colors.grey[300]),
-                              controller: _pagerController,
-                              count: widget.listing.photos.length)),
-                    )
-                  ])),
-            ),
+                    height: MediaQuery.of(context).size.height / 3,
+                    child: Stack(
+                        children: skipNulls([
+                      PageView.builder(
+                          controller: _pagerController,
+                          itemCount: widget.listing.photos.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return displayImage(
+                                widget.listing.photos[index], 400);
+                          }),
+                      widget.listing.photos.length < 2
+                          ? null
+                          : Padding(
+                              padding: const EdgeInsets.only(bottom: 8.0),
+                              child: Align(
+                                  alignment: Alignment.bottomCenter,
+                                  child: SmoothPageIndicator(
+                                      effect: ColorTransitionEffect(
+                                          activeDotColor: Color(COLOR_PRIMARY),
+                                          dotHeight: 8,
+                                          dotWidth: 8,
+                                          dotColor: Colors.grey[300]),
+                                      controller: _pagerController,
+                                      count: widget.listing.photos.length)),
+                            )
+                    ])),
+                  ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Row(
@@ -370,9 +366,7 @@ class _ListingDetailsScreenState extends State<ListingDetailsScreen> {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.only(
-                        top: 8.0, bottom: 8, left: 24,
-                        right: 100
-                    ),
+                        top: 8.0, bottom: 8, left: 24, right: 100),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -380,7 +374,8 @@ class _ListingDetailsScreenState extends State<ListingDetailsScreen> {
                             style: TextStyle(fontWeight: FontWeight.bold)),
                         Text(widget.listing.filters.values.elementAt(index),
                             style: TextStyle(color: Colors.grey)),
-                      ],),
+                      ],
+                    ),
                   );
                 }),
             Padding(
@@ -444,16 +439,17 @@ class _ListingDetailsScreenState extends State<ListingDetailsScreen> {
                     isDarkMode(context) ? Colors.grey[400] : Colors.grey[500]),
           ),
           trailing: RatingBar(
-              onRatingUpdate: null,
-              ignoreGestures: true,
-              glow: false,
-              itemCount: 5,
-              allowHalfRating: true,
-              itemSize: 20,
-              unratedColor: Color(COLOR_PRIMARY).withOpacity(.5),
-              initialRating: review.starCount,
-              itemBuilder: (context, index) =>
-                  Icon(Icons.star, color: Color(COLOR_PRIMARY))),
+            onRatingUpdate: null,
+            ignoreGestures: true,
+            glow: false,
+            itemCount: 5,
+            allowHalfRating: true,
+            itemSize: 20,
+            unratedColor: Color(COLOR_PRIMARY).withOpacity(.5),
+            initialRating: review.starCount,
+            // itemBuilder: (context, index) =>
+            //     Icon(Icons.star, color: Color(COLOR_PRIMARY))
+          ),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(16.0, 0, 16, 8),

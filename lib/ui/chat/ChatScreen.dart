@@ -109,7 +109,7 @@ class _ChatScreenState extends State<ChatScreen> {
             },
           ),
         ],
-         title: homeConversationModel.isGroupChat
+        title: homeConversationModel.isGroupChat
             ? Text(
                 homeConversationModel.conversationModel.name,
               )
@@ -384,13 +384,17 @@ class _ChatScreenState extends State<ChatScreen> {
     String text = friend.active
         ? 'En Linea'
         : 'últ. vez hoy a las  '
-        '${setLastSeen(friend.lastOnlineTimestamp?.seconds ?? 0)}';
+            '${setLastSeen(friend.lastOnlineTimestamp?.seconds ?? 0)}';
     return Text(
       text,
       style: TextStyle(
           color: Platform.isIOS
-              ? isDarkMode(context) ? Colors.grey[200] : Colors.grey
-              : isDarkMode(context) ? Colors.grey [800] : Colors.grey[200],
+              ? isDarkMode(context)
+                  ? Colors.grey[200]
+                  : Colors.grey
+              : isDarkMode(context)
+                  ? Colors.grey[800]
+                  : Colors.grey[200],
           fontSize: 15),
     );
   }
@@ -960,11 +964,12 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   _sendMessage(String content, Url url, String videoThumbnail) async {
+    print('timestamp: ${FieldValue.serverTimestamp().runtimeType}');
     MessageData message;
     if (homeConversationModel.isGroupChat) {
       message = MessageData(
           content: content,
-          created: Timestamp.now(),
+          created: FieldValue.serverTimestamp(),
           senderFirstName: MyAppState.currentUser.firstName,
           senderID: MyAppState.currentUser.userID,
           senderLastName: MyAppState.currentUser.lastName,
@@ -974,7 +979,7 @@ class _ChatScreenState extends State<ChatScreen> {
     } else {
       message = MessageData(
           content: content,
-          created: Timestamp.now(),
+          created: FieldValue.serverTimestamp(),
           recipientFirstName: homeConversationModel.members.first.firstName,
           recipientID: homeConversationModel.members.first.userID,
           recipientLastName: homeConversationModel.members.first.lastName,
@@ -1010,8 +1015,8 @@ class _ChatScreenState extends State<ChatScreen> {
       await _fireStoreUtils
           .updateChannel(homeConversationModel.conversationModel);
     } else {
-      showAlertDialog(context, 'Error',
-          'No se pudo enviar el mensaje, intenta nuevamente');
+      showAlertDialog(
+          context, 'Error', 'No se pudo enviar el mensaje, intenta nuevamente');
     }
   }
 
@@ -1070,8 +1075,10 @@ class _ChatScreenState extends State<ChatScreen> {
                               if (homeConversationModel
                                       .conversationModel.name !=
                                   _groupNameController.text) {
-                                showProgress(context,
-                                    'Cambiando el nombre del grupo, espera...', false);
+                                showProgress(
+                                    context,
+                                    'Cambiando el nombre del grupo, espera...',
+                                    false);
                                 homeConversationModel.conversationModel.name =
                                     _groupNameController.text.trim();
                                 await _fireStoreUtils.updateChannel(
@@ -1112,9 +1119,7 @@ class _ChatScreenState extends State<ChatScreen> {
               _showAlertDialog(context, 'Bloqueado',
                   '${homeConversationModel.members.first.fullName()} fue bloqueado.');
             } else {
-              _showAlertDialog(
-                  context,
-                  'Bloqueo',
+              _showAlertDialog(context, 'Bloqueo',
                   'Non se puede bloquear ${homeConversationModel.members.first.fullName()}, intenta nuevamente mas tarde.');
             }
           },
@@ -1132,9 +1137,7 @@ class _ChatScreenState extends State<ChatScreen> {
               _showAlertDialog(context, 'Reporte',
                   '${homeConversationModel.members.first.fullName()} fue reportado y bloqueado.');
             } else {
-              _showAlertDialog(
-                  context,
-                  'Reporte',
+              _showAlertDialog(context, 'Reporte',
                   'No se puede reportar ${homeConversationModel.members.first.fullName()}, intenta nuevamente mas tarde.');
             }
           },

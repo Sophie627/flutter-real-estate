@@ -66,6 +66,7 @@ class _SignUpState extends State<SignUpScreen> {
           margin: new EdgeInsets.only(left: 16.0, right: 16, bottom: 16),
           child: new Form(
             key: _key,
+            // ignore: deprecated_member_use
             autovalidate: _validate,
             child: formUI(),
           ),
@@ -244,23 +245,19 @@ class _SignUpState extends State<SignUpScreen> {
                 onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
                 decoration: InputDecoration(
                   contentPadding:
-                  new EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                      new EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                   fillColor: Colors.white,
                   hintText: 'Apellido',
                   focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(25.0),
                       borderSide:
-                      BorderSide(color: Color(COLOR_PRIMARY), width: 2.0)),
+                          BorderSide(color: Color(COLOR_PRIMARY), width: 2.0)),
                   errorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Theme
-                        .of(context)
-                        .errorColor),
+                    borderSide: BorderSide(color: Theme.of(context).errorColor),
                     borderRadius: BorderRadius.circular(25.0),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Theme
-                        .of(context)
-                        .errorColor),
+                    borderSide: BorderSide(color: Theme.of(context).errorColor),
                     borderRadius: BorderRadius.circular(25.0),
                   ),
                   enabledBorder: OutlineInputBorder(
@@ -284,7 +281,7 @@ class _SignUpState extends State<SignUpScreen> {
                   border: Border.all(color: Colors.grey[200])),
               child: InternationalPhoneNumberInput(
                 onInputChanged: (PhoneNumber number) =>
-                _phoneNumber = number.phoneNumber,
+                    _phoneNumber = number.phoneNumber,
                 onInputValidated: (bool value) => _isPhoneValid = value,
                 ignoreBlank: true,
                 autoValidate: true,
@@ -316,7 +313,7 @@ class _SignUpState extends State<SignUpScreen> {
               onChanged: (_) {},
               onTap: () {},
               length: 6,
-              textInputType: TextInputType.phone,
+              keyboardType: TextInputType.phone,
               backgroundColor: Colors.transparent,
               pinTheme: PinTheme(
                   shape: PinCodeFieldShape.box,
@@ -354,23 +351,19 @@ class _SignUpState extends State<SignUpScreen> {
                 },
                 decoration: InputDecoration(
                   contentPadding:
-                  new EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                      new EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                   fillColor: Colors.white,
                   hintText: 'Correo electrónico',
                   focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(25.0),
                       borderSide:
-                      BorderSide(color: Color(COLOR_PRIMARY), width: 2.0)),
+                          BorderSide(color: Color(COLOR_PRIMARY), width: 2.0)),
                   errorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Theme
-                        .of(context)
-                        .errorColor),
+                    borderSide: BorderSide(color: Theme.of(context).errorColor),
                     borderRadius: BorderRadius.circular(25.0),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Theme
-                        .of(context)
-                        .errorColor),
+                    borderSide: BorderSide(color: Theme.of(context).errorColor),
                     borderRadius: BorderRadius.circular(25.0),
                   ),
                   enabledBorder: OutlineInputBorder(
@@ -402,23 +395,19 @@ class _SignUpState extends State<SignUpScreen> {
                 cursorColor: Color(COLOR_PRIMARY),
                 decoration: InputDecoration(
                   contentPadding:
-                  new EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                      new EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                   fillColor: Colors.white,
                   hintText: 'Clave',
                   focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(25.0),
                       borderSide:
-                      BorderSide(color: Color(COLOR_PRIMARY), width: 2.0)),
+                          BorderSide(color: Color(COLOR_PRIMARY), width: 2.0)),
                   errorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Theme
-                        .of(context)
-                        .errorColor),
+                    borderSide: BorderSide(color: Theme.of(context).errorColor),
                     borderRadius: BorderRadius.circular(25.0),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Theme
-                        .of(context)
-                        .errorColor),
+                    borderSide: BorderSide(color: Theme.of(context).errorColor),
                     borderRadius: BorderRadius.circular(25.0),
                   ),
                   enabledBorder: OutlineInputBorder(
@@ -452,23 +441,19 @@ class _SignUpState extends State<SignUpScreen> {
                 cursorColor: Color(COLOR_PRIMARY),
                 decoration: InputDecoration(
                   contentPadding:
-                  new EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                      new EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                   fillColor: Colors.white,
                   hintText: 'Confirma la clave',
                   focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(25.0),
                       borderSide:
-                      BorderSide(color: Color(COLOR_PRIMARY), width: 2.0)),
+                          BorderSide(color: Color(COLOR_PRIMARY), width: 2.0)),
                   errorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Theme
-                        .of(context)
-                        .errorColor),
+                    borderSide: BorderSide(color: Theme.of(context).errorColor),
                     borderRadius: BorderRadius.circular(25.0),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Theme
-                        .of(context)
-                        .errorColor),
+                    borderSide: BorderSide(color: Theme.of(context).errorColor),
                     borderRadius: BorderRadius.circular(25.0),
                   ),
                   enabledBorder: OutlineInputBorder(
@@ -540,7 +525,8 @@ class _SignUpState extends State<SignUpScreen> {
   _sendToServer() async {
     if (_key.currentState.validate()) {
       _key.currentState.save();
-      showProgress(context, 'Estamos creando tu cuenta, por favor espera...', false);
+      showProgress(
+          context, 'Estamos creando tu cuenta, por favor espera...', false);
       var profilePicUrl = '';
       try {
         AuthResult result = await FirebaseAuth.instance
@@ -645,6 +631,7 @@ class _SignUpState extends State<SignUpScreen> {
           timeout: Duration(minutes: 2),
           verificationCompleted: (AuthCredential phoneAuthCredential) {},
           verificationFailed: (AuthException error) {
+            print('phoneNumber $phoneNumber');
             print('${error.message}');
           },
           codeSent: (String verificationId, [int forceResendingToken]) {

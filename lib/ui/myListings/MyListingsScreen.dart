@@ -29,7 +29,7 @@ class _MyListingsScreenState extends State<MyListingsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-         title: Text(
+        title: Text(
           'Mis propiedades',
         ),
       ),
@@ -88,9 +88,8 @@ class _MyListingsScreenState extends State<MyListingsScreen> {
                   top: 0,
                   right: 0,
                   child: IconButton(
-                      tooltip: listing.isFav
-                        ? 'Quitar de favoritos'
-                        : 'Favoritos',
+                      tooltip:
+                          listing.isFav ? 'Quitar de favoritos' : 'Favoritos',
                       icon: Icon(
                         Icons.favorite,
                         color:
@@ -137,8 +136,8 @@ class _MyListingsScreenState extends State<MyListingsScreen> {
             itemSize: 22,
             glow: false,
             unratedColor: Color(COLOR_PRIMARY).withOpacity(0.5),
-            itemBuilder: (context, index) =>
-                Icon(Icons.star, color: Color(COLOR_PRIMARY)),
+            // itemBuilder: (context, index) =>
+            //     Icon(Icons.star, color: Color(COLOR_PRIMARY)),
             itemCount: 5,
             onRatingUpdate: (newValue) {},
           )
@@ -175,8 +174,7 @@ class _MyListingsScreenState extends State<MyListingsScreen> {
                     borderRadius: BorderRadius.circular(8)),
                 padding: EdgeInsets.symmetric(vertical: 12),
                 color: Color(COLOR_PRIMARY),
-                onPressed: () => push(context, AddListingScreen())
-            ),
+                onPressed: () => push(context, AddListingScreen())),
           ),
         )
       ],

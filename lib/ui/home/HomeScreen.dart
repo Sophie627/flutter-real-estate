@@ -111,7 +111,9 @@ class HomeScreenState extends State<HomeScreen> {
                                   mainAxisSpacing: 24,
                                   crossAxisSpacing: 16),
                           itemCount: listings.length > 4
-                              ? _showAll ? listings.length : 4
+                              ? _showAll
+                                  ? listings.length
+                                  : 4
                               : listings.length,
                           itemBuilder: (context, index) {
                             return _buildListingCard(listings[index]);
@@ -228,11 +230,10 @@ class HomeScreenState extends State<HomeScreen> {
                       icon: Icon(
                         Icons.favorite,
                         color:
-                        listing.isFav ? Color(COLOR_PRIMARY) : Colors.white,
+                            listing.isFav ? Color(COLOR_PRIMARY) : Colors.white,
                       ),
-                      tooltip: listing.isFav
-                          ? 'Quitar de favoritos'
-                          : 'Favoritos',
+                      tooltip:
+                          listing.isFav ? 'Quitar de favoritos' : 'Favoritos',
                       onPressed: () {
                         listing.isFav = !listing.isFav;
                         setState(() {});
@@ -274,8 +275,8 @@ class HomeScreenState extends State<HomeScreen> {
             itemSize: 22,
             glow: false,
             unratedColor: Color(COLOR_PRIMARY).withOpacity(0.5),
-            itemBuilder: (context, index) =>
-                Icon(Icons.star, color: Color(COLOR_PRIMARY)),
+            // itemBuilder: (context, index) =>
+            //     Icon(Icons.star, color: Color(COLOR_PRIMARY)),
             itemCount: 5,
             onRatingUpdate: (newValue) {},
           )
@@ -359,8 +360,12 @@ class HomeScreenState extends State<HomeScreen> {
           child: ConstrainedBox(
             constraints: BoxConstraints(minWidth: double.infinity),
             child: RaisedButton(
-                child: Text('Agregar propiedad', style: TextStyle(color: isDarkMode
-                  (context) ? Colors.black : Colors.white, fontSize: 18),),
+                child: Text(
+                  'Agregar propiedad',
+                  style: TextStyle(
+                      color: isDarkMode(context) ? Colors.black : Colors.white,
+                      fontSize: 18),
+                ),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8)),
                 padding: EdgeInsets.symmetric(vertical: 12),
@@ -371,5 +376,4 @@ class HomeScreenState extends State<HomeScreen> {
       ],
     );
   }
-
 }

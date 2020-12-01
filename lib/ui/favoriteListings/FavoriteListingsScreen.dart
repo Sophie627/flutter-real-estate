@@ -27,7 +27,7 @@ class _FavoriteListingScreenState extends State<FavoriteListingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(
+        title: Text(
           'Favoritos',
         ),
       ),
@@ -119,6 +119,7 @@ class _FavoriteListingScreenState extends State<FavoriteListingScreen> {
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Text(listing.place, maxLines: 1),
           ),
+          // ignore: missing_required_param
           RatingBar(
             ignoreGestures: true,
             minRating: .5,
@@ -129,8 +130,8 @@ class _FavoriteListingScreenState extends State<FavoriteListingScreen> {
             itemSize: 22,
             glow: false,
             unratedColor: Color(COLOR_PRIMARY).withOpacity(0.5),
-            itemBuilder: (context, index) =>
-                Icon(Icons.star, color: Color(COLOR_PRIMARY)),
+            // itemBuilder: (context, index) =>
+            // Icon(Icons.star, color: Color(COLOR_PRIMARY)),
             itemCount: 5,
             onRatingUpdate: (newValue) {},
           )

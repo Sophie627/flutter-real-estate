@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "91271873928-mkhtjiq107bb2tc239r4tf5idppg8qc4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.propiedadraizOmar.Berrio",
+            "certificate_hash": "4805f0d7654d9d93173958e8dcb8d070be8b5f77"
+          }
+        },
+        {
           "client_id": "91271873928-e8o8bv4f51fjq0qled327sktqip31vp5.apps.googleusercontent.com",
           "client_type": 3
         }

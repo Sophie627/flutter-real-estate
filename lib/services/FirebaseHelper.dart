@@ -49,7 +49,7 @@ class FireStoreUtils {
     }
   }
 
- static Future<User> updateCurrentUser(User user) async {
+  static Future<User> updateCurrentUser(User user) async {
     return await firestore
         .collection(USERS)
         .document(user.userID)
@@ -333,8 +333,10 @@ class FireStoreUtils {
         .document();
     message.messageID = ref.documentID;
     ref.setData(message.toJson());
+    ref.updateData({'createAt': FieldValue.serverTimestamp()});
     await Future.forEach(members, (User element) async {
       if (element.settings.pushNewMessages) {
+        print('fcmToken ${element.fcmToken}');
         await sendNotification(
             element.fcmToken,
             isGroup
@@ -508,7 +510,7 @@ class FireStoreUtils {
   Future<List<CategoriesModel>> getCategories() async {
     listOfCategories.clear();
     QuerySnapshot result =
-    await firestore.collection(CATEGORIES).orderBy('order').getDocuments();
+        await firestore.collection(CATEGORIES).orderBy('order').getDocuments();
     Future.forEach(result.documents, ((e) {
       listOfCategories.add(CategoriesModel.fromJson(e.data));
     }));

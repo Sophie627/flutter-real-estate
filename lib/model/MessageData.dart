@@ -4,7 +4,7 @@ class MessageData {
   String messageID = '';
   Url url = Url(url: '', mime: '');
   String content = '';
-  Timestamp created = Timestamp.now();
+  FieldValue created = FieldValue.serverTimestamp();
   String recipientFirstName = '';
   String recipientLastName = '';
   String recipientProfilePictureURL = '';
@@ -35,8 +35,9 @@ class MessageData {
         messageID: parsedJson['id'] ?? parsedJson['messageID'] ?? '',
         url: Url.fromJson(parsedJson['url'] ?? {'mime': '', 'url': ''}),
         content: parsedJson['content'] ?? '',
-        created:
-            parsedJson['createdAt'] ?? parsedJson['created'] ?? Timestamp.now(),
+        created: FieldValue.serverTimestamp(),
+        // created:
+        // parsedJson['createdAt'] ?? parsedJson['created'] ?? Timestamp.now(),
         recipientFirstName: parsedJson['recipientFirstName'] ?? '',
         recipientLastName: parsedJson['recipientLastName'] ?? '',
         recipientProfilePictureURL:
