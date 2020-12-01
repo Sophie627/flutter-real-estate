@@ -17,6 +17,8 @@ const HOUR_MILLIS = 60 * MINUTE_MILLIS;
 const SWIPE_COUNT = 'swipe_counts';
 const SERVER_KEY =
     "AAAAeliTfEs:APA91bGve5fyExjSiUCB0oI09Br1yGUSb0tPHelAk7L0FUytHWGOMlBPexJubTwSjjJTaIlK7oto3jDevoj9c5Q4Qalk6QEtQ9Y3tYfTxHD7OrmPZuVJjVGGciPBJXThG9QHCZQqx9Id";
+const CURRENT_SERVER_KEY =
+    "AAAAFUA6RYg:APA91bHKLBcVz1aNHkB482MJNyPg-lm3GiW1pZX8sl0tGDi6ZleH1RLQUn9VV0HL0N2StdWp4qD9fNnsc_B_N8f7mXCGzzhGKexp3NfSE0kXB8_DKbYu-b4CFH0CBez3AMYBTiTUdBUg";
 
 const DEFAULT_AVATAR_URL =
     'https://www.iosapptemplates.com/wp-content/uploads/2019/06/empty-avatar.jpg';

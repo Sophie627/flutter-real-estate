@@ -650,7 +650,7 @@ sendNotification(String token, String title, String body) async {
     'https://fcm.googleapis.com/fcm/send',
     headers: <String, String>{
       'Content-Type': 'application/json',
-      'Authorization': 'key=$SERVER_KEY',
+      'Authorization': 'key=$CURRENT_SERVER_KEY',
     },
     body: jsonEncode(
       <String, dynamic>{
